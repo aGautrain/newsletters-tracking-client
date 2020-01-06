@@ -1,0 +1,25 @@
+
+table {
+  margin: auto;
+  margin-bottom: 50px;
+  width: 80%;
+  max-width: 1200px;
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    text-align: left;
+
+    &.td-with-icon {
+      text-align: center;
+    }
+  }
+
+  .mat-column-name {
+    mat-icon:hover {
+      cursor: pointer;
+    }
+  }
+}

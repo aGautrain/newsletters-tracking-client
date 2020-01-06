@@ -1,0 +1,22 @@
+<h1><img src="/assets/icon.png" alt="" title="Just a badger" class="app-logo"> NewslettersManager</h1>
+
+<p>Actuellement, {{ (pendingNewsletters.length + newslettersSent.length) }} newsletters sont suivies</p>
+
+<h2>Newsletters en attente d'envoi</h2>
+<app-newsletters-table (onSelect)="openCard($event)" [newsletters]="pendingNewsletters"></app-newsletters-table>
+
+<h2>Newsletters reçues</h2>
+<app-newsletters-table (onSelect)="openCard($event)" [newsletters]="newslettersSent"></app-newsletters-table>
+
+
+<button mat-fab color="primary" class="gmail-btn" (click)="syncWithGmail()"><mat-icon>cloud_download</mat-icon></button>
+
+<div class="legend">
+<h3>Légende</h3>
+<ol>
+  <li><mat-icon>update</mat-icon> : Planifiée</li>
+  <li><mat-icon>flight_land</mat-icon> : Newsletter arrivée</li>
+  <li><mat-icon>warning</mat-icon> : En retard</li>
+  <li><mat-icon>error</mat-icon> : Pas envoyée</li>
+</ol>
+</div>
