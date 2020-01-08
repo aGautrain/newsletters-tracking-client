@@ -3,10 +3,10 @@
 <p>Actuellement, {{ (pendingNewsletters.length + newslettersSent.length) }} newsletters sont suivies</p>
 
 <h2>Newsletters en attente d'envoi</h2>
-<app-newsletters-table (onSelect)="openCard($event)" [newsletters]="pendingNewsletters"></app-newsletters-table>
+<app-newsletters-table (onSelectName)="openDialogName($event)" (onSelect)="openDialogSummary($event)" [newsletters]="pendingNewsletters"></app-newsletters-table>
 
 <h2>Newsletters reçues</h2>
-<app-newsletters-table (onSelect)="openCard($event)" [newsletters]="newslettersSent"></app-newsletters-table>
+<app-newsletters-table (onSelectName)="openDialogName($event)" (onSelect)="openDialogSummary($event)" [newsletters]="newslettersSent"></app-newsletters-table>
 
 
 <button mat-fab color="primary" class="gmail-btn" (click)="syncWithGmail()"><mat-icon>cloud_download</mat-icon></button>

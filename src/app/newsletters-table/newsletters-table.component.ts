@@ -12,8 +12,9 @@ import { Newsletter, ScriptExecutionResult, NewsletterStatus } from '../newslett
 export class NewslettersTableComponent implements OnInit {
 
   @Input() newsletters: Newsletter[];
+  @Output() onSelectName = new EventEmitter<Newsletter>();
   @Output() onSelect = new EventEmitter<Newsletter>();
-  DISPLAYED_COLUMNS: string[] = ['name', 'expeditor', 'lastSent', 'expectedDateTime', 'status', 'arrivedToday'];
+  DISPLAYED_COLUMNS: string[] = ['name', 'expeditor', 'lastReceivedByClient', 'expectedDateTime', 'status', 'arrivedToday'];
 
   dataSource = new MatTableDataSource(this.newsletters);
 
@@ -25,9 +26,6 @@ export class NewslettersTableComponent implements OnInit {
   ngOnInit() {
 
     this.dataSource.sort = this.sort;
-
-    // hack using next tick to wait for @Input
-    // setTimeout(() => this.dataSource.data = this.newsletters, 1);
 
     // this.newsletterService.callGmailApi();
   }
@@ -54,10 +52,12 @@ export class NewslettersTableComponent implements OnInit {
     return NewsletterStatus.NOT_SENT;
   }
 
-  openCard(newsletter: Newsletter): void {
-    this.onSelect.emit(newsletter);
+  openCardForEditingName(newsletter: Newsletter): void {
+    this.onSelectName.emit(newsletter);
   }
 
-
+  openCardForEditing(newsletter: Newsletter): void {
+    this.onSelect.emit(newsletter);
+  }
 
 }

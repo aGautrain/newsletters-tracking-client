@@ -4,7 +4,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent, DialogEditNewsletterName } from './app.component';
+import { AppComponent, DialogEditNewsletterName, DialogEditNewsletter } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewslettersTableComponent } from './newsletters-table/newsletters-table.component';
 
@@ -16,9 +16,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ExcludeMailPipe } from './pipe/exclude-mail.pipe';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -26,10 +29,13 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     NewslettersTableComponent,
-    DialogEditNewsletterName
+    DialogEditNewsletterName,
+    DialogEditNewsletter,
+    ExcludeMailPipe
   ],
   entryComponents: [
-    DialogEditNewsletterName
+    DialogEditNewsletterName,
+    DialogEditNewsletter
   ],
   imports: [
     BrowserModule,
@@ -43,8 +49,10 @@ registerLocaleData(localeFr, 'fr');
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr" }],
   bootstrap: [AppComponent],

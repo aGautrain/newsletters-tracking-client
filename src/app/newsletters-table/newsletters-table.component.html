@@ -23,7 +23,7 @@
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
     <td mat-cell *matCellDef="let newsletter">
-      <mat-icon *ngIf="!newsletter.name; else displayName" (click)="openCard(newsletter)">create</mat-icon>
+      <mat-icon *ngIf="!newsletter.name; else displayName" (click)="openCardForEditingName(newsletter)">create</mat-icon>
       <ng-template #displayName><span (click)="openCard(newsletter)">{{newsletter.name}}</span></ng-template>
     </td>
   </ng-container>
@@ -31,13 +31,13 @@
   <!-- Name Column -->
   <ng-container matColumnDef="expeditor">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Expéditeur </th>
-    <td mat-cell *matCellDef="let newsletter"> {{newsletter.expeditor}} </td>
+    <td mat-cell *matCellDef="let newsletter" (click)="openCardForEditing(newsletter)"> {{newsletter.expeditor | excludeMail}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="lastSent">
+  <ng-container matColumnDef="lastReceivedByClient">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Dernier envoi </th>
-    <td mat-cell *matCellDef="let newsletter"> {{newsletter.lastSent | date:'H:mm (EEEE d MMMM)' }} </td>
+    <td mat-cell *matCellDef="let newsletter">{{newsletter.lastReceivedByClient | date:'H:mm (EEEE d MMMM)' }}<small class="td-lastReceivedByClient-email-subject"><i>{{newsletter.lastEmail.subject}}</i></small></td>
   </ng-container>
 
   <ng-container matColumnDef="status">

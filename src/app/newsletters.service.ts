@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class NewslettersService {
 
-  private apiHost: string = 'http://212.198.49.71:1337/';
+  private apiHost: string = 'http://localhost:1337/';
   private newslettersApiEndpoint: string = 'newsletters/';
   private gmailApiScriptEndpoint: string = 'gmailUpdate/';
   private newslettersSetNameApiEndpoint: string = 'newsletters/setName';
@@ -34,7 +34,7 @@ export class NewslettersService {
                 dateForWarning = this.dateFromMinutes(newsletter.expectedTimeOfArrival + newsletter.toleranceBeforeWarning).getTime();
                 dateForError = this.dateFromMinutes(newsletter.expectedTimeOfArrival + newsletter.toleranceBeforeError).getTime();
 
-                latestDate = new Date(newsletter.lastSent).getTime();
+                latestDate = new Date(newsletter.lastReceivedByClient).getTime();
 
                 newsletter.expectedDateTime = dueDate;
 

@@ -23,7 +23,7 @@ export class AppComponent {
     this.refreshNewsletters();
   }
 
-  openCard(nl: Newsletter) {
+  openDialogName(nl: Newsletter) {
 
     const dialogRef = this.dialog.open(DialogEditNewsletterName, {
       width: '400px',
@@ -34,6 +34,18 @@ export class AppComponent {
       if (name) {
         this.newsletterService.setNewsletterName(nl.id, name);
       }
+    });
+  }
+
+  openDialogSummary(nl: Newsletter) {
+
+    const dialogRef = this.dialog.open(DialogEditNewsletter, {
+      width: '400px',
+      data: nl
+    });
+
+    dialogRef.afterClosed().subscribe(nlModified => {
+      // TODO API call
     });
   }
 
@@ -82,6 +94,22 @@ export class DialogEditNewsletterName {
 
   constructor(
     public dialogRef: MatDialogRef<DialogEditNewsletterName>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-edit-newsletter',
+  templateUrl: 'dialog-edit-newsletter.html',
+})
+export class DialogEditNewsletter {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEditNewsletter>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {

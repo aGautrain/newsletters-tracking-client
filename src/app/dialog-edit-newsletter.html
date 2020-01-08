@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Newsletter #{{data.id}}</h1>
+<div mat-dialog-content style="display: flex; flex-direction: column;">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name" placeholder="Nom">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.expeditor" placeholder="Expéditeur">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Périodicité</mat-label>
+  <mat-select [(value)]="data.expectedPeriodicity">
+    <mat-option value="daily">
+      Quotidienne
+    </mat-option>
+    <mat-option value="weekly">
+      Hebdomadaire
+    </mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="data.expectedTimeOfArrival" placeholder="Heure d'envoi">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="data.toleranceBeforeWarning" placeholder="Délai avant retard">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="data.toleranceBeforeError" placeholder="Délai avant erreur">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Retour</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Valider</button>
+</div>
