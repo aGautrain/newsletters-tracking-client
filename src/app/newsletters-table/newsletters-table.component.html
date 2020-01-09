@@ -24,7 +24,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
     <td mat-cell *matCellDef="let newsletter">
       <mat-icon *ngIf="!newsletter.name; else displayName" (click)="openCardForEditingName(newsletter)">create</mat-icon>
-      <ng-template #displayName><span (click)="openCard(newsletter)">{{newsletter.name}}</span></ng-template>
+      <ng-template #displayName><span (click)="openCardForEditingName(newsletter)">{{newsletter.name}}</span></ng-template>
     </td>
   </ng-container>
 
