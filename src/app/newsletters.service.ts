@@ -38,7 +38,7 @@ export class NewslettersService {
 
                 newsletter.expectedDateTime = dueDate;
 
-                if (latestDate > dueDate) {
+                if (this.hasReceivedToday(latestDate) || latestDate > dueDate) {
                   newsletter.arrivedToday = true;
                   newsletter.expectedDateTime = tomorrowDueDate;
 
@@ -113,6 +113,15 @@ export class NewslettersService {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     return tomorrow;
+  }
+
+  private hasReceivedToday(d: number): boolean {
+    const today = new Date();
+    const date = new Date(d);
+
+    return (today.getDate() === date.getDate()
+            && today.getMonth() === date.getMonth()
+            && today.getFullYear() === date.getFullYear());
   }
 
 }

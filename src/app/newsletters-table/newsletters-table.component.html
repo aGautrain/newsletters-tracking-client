@@ -37,7 +37,7 @@
   <!-- Weight Column -->
   <ng-container matColumnDef="lastReceivedByClient">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Dernier envoi </th>
-    <td mat-cell *matCellDef="let newsletter">{{newsletter.lastReceivedByClient | date:'H:mm (EEEE d MMMM)' }}<small class="td-lastReceivedByClient-email-subject"><i>{{newsletter.lastEmail.subject}}</i></small></td>
+    <td mat-cell *matCellDef="let newsletter">{{newsletter.lastReceivedByClient | date:'H:mm (EEEE d MMMM)' }}</td>
   </ng-container>
 
   <ng-container matColumnDef="status">

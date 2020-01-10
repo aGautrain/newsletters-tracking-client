@@ -14,7 +14,7 @@ export class NewslettersTableComponent implements OnInit {
   @Input() newsletters: Newsletter[];
   @Output() onSelectName = new EventEmitter<Newsletter>();
   @Output() onSelect = new EventEmitter<Newsletter>();
-  DISPLAYED_COLUMNS: string[] = ['name', 'expeditor', 'lastReceivedByClient', 'expectedDateTime', 'status', 'arrivedToday'];
+  DISPLAYED_COLUMNS: string[] = ['name', 'expeditor', 'expectedDateTime', 'status', 'arrivedToday'];
 
   dataSource = new MatTableDataSource(this.newsletters);
 
