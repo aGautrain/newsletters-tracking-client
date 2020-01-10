@@ -1,0 +1,41 @@
+h1 {
+  margin-top: 50px;
+}
+
+.newsletter-fields {
+  padding: 0px 40px 40px 40px;
+  min-width: 500px;
+  margin: auto;
+}
+
+
+mat-horizontal-stepper {
+  pointer-events: none;
+}
+
+.newsletter-save-btn {
+  mat-icon {
+    position: relative;
+    top: -2px;
+    margin-right: 10px;
+  }
+}
+
+.newsletter-email {
+  width: 80%;
+  margin: 40px auto;
+
+  &.old {
+    transform: scale(0.8)
+  }
+}
+
+mat-card {
+
+  max-width: 400px;
+  padding-bottom: 0px;
+
+  mat-card-title {
+    text-align: left;
+  }
+}

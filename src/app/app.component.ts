@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { NewslettersService } from './newsletters.service';
 import { Newsletter, ScriptExecutionResult } from './newsletter';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatSidenav} from '@angular/material/sidenav';
 
 
 
@@ -14,8 +15,12 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class AppComponent {
 
+  @ViewChild(MatSidenav, {static: false}) sidenav: MatSidenav;
+
   pendingNewsletters: Newsletter[] = [];
   newslettersSent: Newsletter[] = [];
+
+  activeNewsletter: Newsletter;
 
   constructor(private newsletterService: NewslettersService, public dialog: MatDialog, private snackbar: MatSnackBar) { }
 
@@ -39,14 +44,8 @@ export class AppComponent {
 
   openDialogSummary(nl: Newsletter) {
 
-    const dialogRef = this.dialog.open(DialogEditNewsletter, {
-      width: '400px',
-      data: nl
-    });
-
-    dialogRef.afterClosed().subscribe(nlModified => {
-      // TODO API call
-    });
+    this.activeNewsletter = nl;
+    this.sidenav.open();
   }
 
   refreshNewsletters(): void {

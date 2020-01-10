@@ -18,10 +18,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCardModule} from '@angular/material/card';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ExcludeMailPipe } from './pipe/exclude-mail.pipe';
+import { NewsletterCardComponent } from './newsletter-card/newsletter-card.component';
+import { OnlyMailPipe } from './pipe/only-mail.pipe';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -31,7 +36,9 @@ registerLocaleData(localeFr, 'fr');
     NewslettersTableComponent,
     DialogEditNewsletterName,
     DialogEditNewsletter,
-    ExcludeMailPipe
+    ExcludeMailPipe,
+    NewsletterCardComponent,
+    OnlyMailPipe
   ],
   entryComponents: [
     DialogEditNewsletterName,
@@ -52,7 +59,10 @@ registerLocaleData(localeFr, 'fr');
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule,
+    MatStepperModule,
+    MatCardModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr" }],
   bootstrap: [AppComponent],
