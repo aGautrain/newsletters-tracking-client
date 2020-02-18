@@ -3,7 +3,7 @@
 // Based on Sails models
 
 export interface Newsletter {
-  id: number;
+  id: string;
   name?: string;
   expeditor: string;
   expectedTimeOfArrival: number;
@@ -31,6 +31,7 @@ export interface Newsletter {
 }
 
 export interface ScriptExecutionResult {
+  messagesTotal: number;
   messagesProcessed: number;
   newslettersModified: number;
   newslettersCreated: number;
@@ -47,7 +48,7 @@ export interface Email {
 }
 
 export interface Engine {
-  businessId: number;
+  id: string;
   name: string;
   description: string;
   newsletters: Newsletter[] | number[];

@@ -68,7 +68,7 @@
 
 
 <!-- card for last email preview -->
-<mat-card class="newsletter-email">
+<mat-card class="newsletter-email" *ngIf="newsletter?.lastEmail">
   <mat-card-header>
     <div mat-card-avatar><mat-icon>mail_outline</mat-icon></div>
     <mat-card-title>{{newsletter?.lastEmail?.subject}}</mat-card-title>
@@ -76,7 +76,7 @@
   </mat-card-header>
 </mat-card>
 
-<mat-card class="newsletter-email old">
+<mat-card class="newsletter-email old" *ngIf="newsletter?.lastEmail">
   <mat-card-header>
     <div mat-card-avatar><mat-icon>mail_outline</mat-icon></div>
     <mat-card-title>{{newsletter?.lastEmail?.subject}}</mat-card-title>
@@ -84,7 +84,7 @@
   </mat-card-header>
 </mat-card>
 
-<mat-card class="newsletter-email old">
+<mat-card class="newsletter-email old" *ngIf="newsletter?.lastEmail">
   <mat-card-header>
     <div mat-card-avatar><mat-icon>mail_outline</mat-icon></div>
     <mat-card-title>{{newsletter?.lastEmail?.subject}}</mat-card-title>

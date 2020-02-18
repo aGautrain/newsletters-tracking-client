@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, Input } from '@angular/core';
 import { Newsletter } from '../newsletter';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { NewslettersService } from '../newsletters.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NewsletterCardComponent implements OnInit, OnChanges {
 
   @Input() newsletter: Newsletter;
 
-  constructor() { }
+  constructor(private newsletterService: NewslettersService) { }
 
   ngOnInit() {
   }
@@ -43,7 +44,19 @@ export class NewsletterCardComponent implements OnInit, OnChanges {
   }
 
   save(): void {
-    // TODO: API call
+
+    const nextNewsletterBody = {
+      id: this.newsletter.id,
+      name: this.newsletter.name,
+      expeditor: this.newsletter.expeditor,
+      expectedPeriodicity: this.newsletter.expectedPeriodicity,
+      expectedTimeOfArrival: this.newsletter.expectedTimeOfArrival,
+      toleranceBeforeError: this.newsletter.toleranceBeforeError,
+      toleranceBeforeWarning: this.newsletter.toleranceBeforeWarning
+    }
+
+    // API call
+    this.newsletterService.setNewsletter(this.newsletter.id, nextNewsletterBody);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Newsletter, ScriptExecutionResult, NewsletterStatus } from './newsletter';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class NewslettersService {
   private newslettersApiEndpoint: string = 'newsletters/';
   private gmailApiScriptEndpoint: string = 'gmailUpdate/';
   private newslettersSetNameApiEndpoint: string = 'newsletters/setName';
+  private newslettersSetApiEndpoint: string = 'newsletters/';
 
   newsletters: Newsletter[] = [];
 
@@ -34,7 +35,8 @@ export class NewslettersService {
                 dateForWarning = this.dateFromMinutes(newsletter.expectedTimeOfArrival + newsletter.toleranceBeforeWarning).getTime();
                 dateForError = this.dateFromMinutes(newsletter.expectedTimeOfArrival + newsletter.toleranceBeforeError).getTime();
 
-                latestDate = new Date(newsletter.lastReceivedByClient).getTime();
+                // latestDate = new Date(newsletter.lastReceivedByClient).getTime();
+                latestDate = new Date(newsletter.lastSentByServer).getTime();
 
                 newsletter.expectedDateTime = dueDate;
 
@@ -86,11 +88,28 @@ export class NewslettersService {
             });
   }
 
-  setNewsletterName(id: number, name: string): Promise<any> {
+  setNewsletterName(id: string, name: string): Promise<any> {
     return this.http.get<any>(this.apiHost + this.newslettersSetNameApiEndpoint + '?id=' + id + '&name=' + name)
             .toPromise()
             .then((ok) => {
               console.debug('name changed !');
+              return 1;
+            })
+            .catch((err) => console.error(err));
+  }
+
+  setNewsletter(id: string, newsletter: Partial<Newsletter>): Promise<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<Partial<Newsletter>>(this.apiHost + this.newslettersSetApiEndpoint + id, newsletter, httpOptions)
+            .toPromise()
+            .then((ok) => {
+              console.debug('newsletter changed !');
               return 1;
             })
             .catch((err) => console.error(err));
