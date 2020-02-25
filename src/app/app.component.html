@@ -1,7 +1,4 @@
-
-
-
-<mat-sidenav-container #sidenav class="example-container">
+<!--<mat-sidenav-container #sidenav class="example-container">
   <mat-sidenav mode="over" position="end">
     <app-newsletter-card *ngIf="activeNewsletter" [newsletter]="activeNewsletter"></app-newsletter-card>
   </mat-sidenav>
@@ -31,4 +28,27 @@
     </div>
 
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container>-->
+
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><mat-icon>assessment</mat-icon> Outil de suivi des envois</span>
+  </mat-toolbar-row>
+
+  <!--<mat-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Third Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+  </mat-toolbar-row>-->
+</mat-toolbar>
+
+
+<app-sendings-overview class="sendings-overview-table"></app-sendings-overview>

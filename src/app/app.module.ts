@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA , LOCALE_ID } from '@angular/core';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,8 +25,9 @@ import {MatCardModule} from '@angular/material/card';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ExcludeMailPipe } from './pipe/exclude-mail.pipe';
-import { NewsletterCardComponent } from './newsletter-card/newsletter-card.component';
 import { OnlyMailPipe } from './pipe/only-mail.pipe';
+import { SendingsOverviewComponent } from './sendings-overview/sendings-overview.component';
+import {MatToolbarModule} from '@angular/material';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -37,8 +38,8 @@ registerLocaleData(localeFr, 'fr');
     DialogEditNewsletterName,
     DialogEditNewsletter,
     ExcludeMailPipe,
-    NewsletterCardComponent,
-    OnlyMailPipe
+    OnlyMailPipe,
+    SendingsOverviewComponent
   ],
   entryComponents: [
     DialogEditNewsletterName,
@@ -62,9 +63,10 @@ registerLocaleData(localeFr, 'fr');
     MatTooltipModule,
     MatSidenavModule,
     MatStepperModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "fr" }],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Newsletter, ScriptExecutionResult, NewsletterStatus } from './newsletter';
 
+import { environment } from './../environments/environment';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewslettersService {
 
-  private apiHost: string = 'http://localhost:1337/';
-  private newslettersApiEndpoint: string = 'newsletters/';
-  private gmailApiScriptEndpoint: string = 'gmailUpdate/';
-  private newslettersSetNameApiEndpoint: string = 'newsletters/setName';
-  private newslettersSetApiEndpoint: string = 'newsletters/';
+  private apiHost = environment.apiUrl || 'http://localhost:1337/';
+  private newslettersApiEndpoint = 'newsletters/';
+  private gmailApiScriptEndpoint = 'gmailUpdate/';
+  private newslettersSetNameApiEndpoint = 'newsletters/setName';
+  private newslettersSetApiEndpoint = 'newsletters/';
 
   newsletters: Newsletter[] = [];
 
@@ -24,7 +25,8 @@ export class NewslettersService {
             .toPromise()
             .then((newsletters) => {
 
-              let dueDate: number, tomorrowDueDate:number, dateForWarning: number, dateForError: number, latestDate: number, now: number;
+              // tslint:disable-next-line:one-variable-per-declaration
+              let dueDate: number, tomorrowDueDate: number, dateForWarning: number, dateForError: number, latestDate: number, now: number;
 
               now = Date.now();
 
@@ -120,14 +122,14 @@ export class NewslettersService {
   }
 
   private dateFromMinutes(m: number): Date {
-    let today:Date = new Date();
+    const today: Date = new Date();
     today.setHours(m / 60, m % 60, 0);
 
     return today;
   }
 
   private tomorrowDateFromMinutes(m: number): Date {
-    let tomorrow:Date = new Date();
+    const tomorrow: Date = new Date();
     tomorrow.setHours(m / 60, m % 60, 0);
     tomorrow.setDate(tomorrow.getDate() + 1);
 

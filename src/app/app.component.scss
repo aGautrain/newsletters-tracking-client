@@ -1,4 +1,19 @@
 
+.sendings-overview-table {
+  display: block;
+  width: 50%;
+  max-width: 1200px;
+  min-width: 600px;
+  margin: auto;
+}
+
+mat-toolbar {
+  mat-icon {
+    vertical-align: text-bottom;
+  }
+}
+
+/*
 h1 {
   position: relative;
   top: -30px;
@@ -55,3 +70,4 @@ h3 {
 mat-sidenav-container {
   min-height: 100%;
 }
+*/

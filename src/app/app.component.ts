@@ -1,11 +1,9 @@
-import { Component, Inject, ViewChild } from '@angular/core';
-import { NewslettersService } from './newsletters.service';
-import { Newsletter, ScriptExecutionResult } from './newsletter';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {Component, Inject, ViewChild, ViewEncapsulation} from '@angular/core';
+import {NewslettersService} from './newsletters.service';
+import {Newsletter, ScriptExecutionResult} from './newsletter';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSidenav} from '@angular/material/sidenav';
-
-
 
 
 @Component({
